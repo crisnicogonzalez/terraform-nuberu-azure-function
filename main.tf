@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "this" {
-  name     = "function-${var.name}"
+  name     = "function${var.name}"
   location = "East US"
 }
 

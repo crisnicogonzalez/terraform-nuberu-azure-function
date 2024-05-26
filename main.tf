@@ -26,14 +26,22 @@ resource "azurerm_container_registry" "this" {
   admin_enabled       = true
 }
 
-# resource "azurerm_linux_function_app" "example" {
-#   name                = "example-linux-function-app"
-#   resource_group_name = azurerm_resource_group.this.name
-#   location            = azurerm_resource_group.this.location
+resource "azurerm_linux_function_app" "this" {
+  name                = "nuberu${var.name}"
+  resource_group_name = azurerm_resource_group.this.name
+  location            = azurerm_resource_group.this.location
 
-#   storage_account_name       = azurerm_storage_account.this.name
-#   storage_account_access_key = azurerm_storage_account.this.primary_access_key
-#   service_plan_id            = azurerm_service_plan.this.id
+  storage_account_name       = azurerm_storage_account.this.name
+  storage_account_access_key = azurerm_storage_account.this.primary_access_key
+  service_plan_id            = azurerm_service_plan.this.id
 
-#   site_config {}
-# }
+  site_config {
+    application_stack {
+      docker {
+        registry_url = "https://mcr.microsoft.com"
+        image_name   = "dotnet/samples"
+        image_tag    = "aspnetapp"
+      }
+    }
+  }
+}

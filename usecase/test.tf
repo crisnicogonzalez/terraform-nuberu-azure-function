@@ -1,9 +1,9 @@
 terraform {
   backend "azurerm" {
-    resource_group_name   = "terraform-backend"
-    storage_account_name  = "nuberuterraformbackend"
-    container_name        = "tfstate"
-    key                   = "use-cases/pepe"
+    resource_group_name  = "terraform-backend"
+    storage_account_name = "nuberuterraformbackend"
+    container_name       = "tfstate"
+    key                  = "use-cases/pepe"
   }
 
   required_providers {
@@ -21,5 +21,5 @@ provider "azurerm" {
 
 module "test" {
   source = "../"
-  name = "pepe"
+  name   = "pepe"
 }

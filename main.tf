@@ -1,5 +1,5 @@
 resource "azurerm_resource_group" "this" {
-  name     = "function-${var.name}"
+  name     = "function${var.name}"
   location = "East US"
 }
 
@@ -26,6 +26,15 @@ resource "azurerm_container_registry" "this" {
   admin_enabled       = true
 }
 
+resource "azurerm_application_insights" "linux-application-insights" {
+  name                = "application-insights-${var.name}"
+  location            = azurerm_resource_group.this.location
+  resource_group_name = azurerm_resource_group.this.name
+  application_type    = "other"
+}
+
+
+
 resource "azurerm_linux_function_app" "this" {
   name                = "nuberu${var.name}"
   resource_group_name = azurerm_resource_group.this.name
@@ -36,12 +45,10 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id            = azurerm_service_plan.this.id
 
   site_config {
+    application_insights_key               = azurerm_application_insights.linux-application-insights.instrumentation_key
+    application_insights_connection_string = azurerm_application_insights.linux-application-insights.connection_string
     application_stack {
-      docker {
-        registry_url = "https://mcr.microsoft.com"
-        image_name   = "dotnet/samples"
-        image_tag    = "aspnetapp"
-      }
+      python_version = 3.9 #FUNCTIONS_WORKER_RUNTIME        
     }
   }
 }

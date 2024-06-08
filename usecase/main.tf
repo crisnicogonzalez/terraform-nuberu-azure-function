@@ -21,5 +21,5 @@ provider "azurerm" {
 
 module "test" {
   source = "../"
-  name   = "pepe"
+  name   = "NuberuPOC"
 }

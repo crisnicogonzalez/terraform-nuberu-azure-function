@@ -51,15 +51,15 @@ resource "azurerm_linux_function_app" "this" {
   site_config {
     application_stack {
       docker {
-        image_name   = "functhird"
-        image_tag    = "latest"
-        registry_url = azurerm_container_registry.this.id
+        image_name        = "functhird"
+        image_tag         = "latest"
+        registry_url      = azurerm_container_registry.this.id
         registry_username = azurerm_container_registry.this.admin_username
         registry_password = azurerm_container_registry.this.admin_password
       }
     }
     application_insights_connection_string = azurerm_application_insights.this.connection_string
-    application_insights_key = azurerm_application_insights.this.instrumentation_key
+    application_insights_key               = azurerm_application_insights.this.instrumentation_key
 
     http2_enabled = true
   }

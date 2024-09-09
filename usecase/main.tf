@@ -1,9 +1,9 @@
 terraform {
   backend "azurerm" {
-    resource_group_name  = "terraform-backend"
-    storage_account_name = "nuberuterraformbackend"
+    resource_group_name  = "genesis"
+    storage_account_name = "nuberuterraformgenesis"
     container_name       = "tfstate"
-    key                  = "use-cases/pepe"
+    key                  = "/terraform-nuberu-azure-function/use-cases"
   }
 
   required_providers {

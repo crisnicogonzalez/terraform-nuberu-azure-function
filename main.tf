@@ -45,8 +45,8 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id            = azurerm_service_plan.this.id
 
   site_config {
-    application_insights_key               = azurerm_application_insights.linux-application-insights.instrumentation_key
-    application_insights_connection_string = azurerm_application_insights.linux-application-insights.connection_string
+    application_insights_key               = azurerm_application_insights.this.instrumentation_key
+    application_insights_connection_string = azurerm_application_insights.this.connection_string
     application_stack {
       python_version = 3.9 #FUNCTIONS_WORKER_RUNTIME   
     }

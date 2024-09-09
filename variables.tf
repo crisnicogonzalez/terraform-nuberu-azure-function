@@ -76,7 +76,7 @@ variable "region" {
       "southcentralus2",
       "southeastus",
       "southwestus"
-    ], var.location)
+    ], var.region)
     error_message = "La región especificada no es válida. Por favor, elige una región de la lista permitida."
   }
 }

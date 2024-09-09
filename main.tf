@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "this" {
   name     = "Function${var.name}"
-  location = "East US"
+  location = var.location
 }
 
 resource "azurerm_storage_account" "this" {

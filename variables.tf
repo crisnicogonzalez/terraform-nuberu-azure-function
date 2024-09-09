@@ -3,3 +3,8 @@ variable "name" {
   default     = ""
   description = "function name"
 }
+
+variable "location" {
+  type    = string
+  default = null
+}

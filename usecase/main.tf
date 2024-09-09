@@ -22,4 +22,5 @@ provider "azurerm" {
 module "test" {
   source = "../"
   name   = "NuberuPOC"
+  location = "pepe"
 }

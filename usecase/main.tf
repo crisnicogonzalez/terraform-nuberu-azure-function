@@ -15,6 +15,7 @@ terraform {
 }
 
 provider "azurerm" {
+  subscription_id = "cc3dc4a9-a505-4040-ae40-380b2bfdbf1b"
   features {}
 }
 
@@ -22,5 +23,5 @@ provider "azurerm" {
 module "test" {
   source = "../"
   name   = "NuberuPOC"
-  location = "pepe"
+  region = "eastus2"
 }
